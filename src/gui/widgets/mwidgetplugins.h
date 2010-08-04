@@ -21,7 +21,7 @@
 
 #include <QtDesigner/QtDesigner>
 #include <QtCore/qplugin.h>
-#include <QDesignerCustomWidgetInterface>
+#include <QtDesigner/QDesignerCustomWidgetInterface>
 
 class MWidgetPlugin : public QObject, public QDesignerCustomWidgetInterface
 {

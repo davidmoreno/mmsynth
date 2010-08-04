@@ -21,7 +21,10 @@
 #define __MDEBUG__
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <QDateTime>
+
+using namespace std;
 
 static int __doDebug=getenv("DEBUG")!=NULL;
 
