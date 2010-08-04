@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="MSurface" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>674</width>
+    <height>364</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_5">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="title">
+        <string>ADSR</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="MSlider" name="mslider">
+          <property name="number">
+           <number>2</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="MSlider" name="mslider_2">
+          <property name="number">
+           <number>3</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="MSlider" name="mslider_4">
+          <property name="number">
+           <number>4</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="MSlider" name="mslider_3">
+          <property name="number">
+           <number>5</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="MSlider" name="mslider_5">
+          <property name="number">
+           <number>6</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="title">
+        <string>OSC +0</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="MButton" name="mbutton_2">
+          <property name="text">
+           <string>SAW</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>15</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="MButton" name="mbutton">
+          <property name="text">
+           <string>TRIANGLE</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>15</number>
+          </property>
+          <property name="value">
+           <number>26</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="MButton" name="mbutton_5">
+          <property name="text">
+           <string>SQUARE</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>15</number>
+          </property>
+          <property name="value">
+           <number>52</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="MButton" name="mbutton_4">
+          <property name="text">
+           <string>SINE</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>15</number>
+          </property>
+          <property name="value">
+           <number>78</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="MButton" name="mbutton_3">
+          <property name="text">
+           <string>ISAW</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>15</number>
+          </property>
+          <property name="value">
+           <number>110</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_6">
+       <property name="title">
+        <string>OSC -12</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="MButton" name="mbutton_6">
+          <property name="text">
+           <string>SAW</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>16</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup_2</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="MButton" name="mbutton_7">
+          <property name="text">
+           <string>TRIANGLE</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>16</number>
+          </property>
+          <property name="value">
+           <number>26</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup_2</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="MButton" name="mbutton_8">
+          <property name="text">
+           <string>SQUARE</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>16</number>
+          </property>
+          <property name="value">
+           <number>52</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup_2</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="MButton" name="mbutton_9">
+          <property name="text">
+           <string>SINE</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>16</number>
+          </property>
+          <property name="value">
+           <number>78</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup_2</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="MButton" name="mbutton_10">
+          <property name="text">
+           <string>ISAW</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>16</number>
+          </property>
+          <property name="value">
+           <number>110</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup_2</string>
+          </attribute>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_7">
+       <property name="title">
+        <string>OSC +7</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="MButton" name="mbutton_11">
+          <property name="text">
+           <string>SAW</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>17</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup_3</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="MButton" name="mbutton_12">
+          <property name="text">
+           <string>TRIANGLE</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>17</number>
+          </property>
+          <property name="value">
+           <number>26</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup_3</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="MButton" name="mbutton_13">
+          <property name="text">
+           <string>SQUARE</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>17</number>
+          </property>
+          <property name="value">
+           <number>52</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup_3</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="MButton" name="mbutton_14">
+          <property name="text">
+           <string>SINE</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>17</number>
+          </property>
+          <property name="value">
+           <number>78</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup_3</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="MButton" name="mbutton_15">
+          <property name="text">
+           <string>ISAW</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>17</number>
+          </property>
+          <property name="value">
+           <number>110</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup_3</string>
+          </attribute>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_8">
+       <property name="title">
+        <string>OSC +12</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="MButton" name="mbutton_16">
+          <property name="text">
+           <string>SAW</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>18</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup_4</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="MButton" name="mbutton_17">
+          <property name="text">
+           <string>TRIANGLE</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>18</number>
+          </property>
+          <property name="value">
+           <number>26</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup_4</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="MButton" name="mbutton_18">
+          <property name="text">
+           <string>SQUARE</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>18</number>
+          </property>
+          <property name="value">
+           <number>52</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup_4</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="MButton" name="mbutton_19">
+          <property name="text">
+           <string>SINE</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>18</number>
+          </property>
+          <property name="value">
+           <number>78</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup_4</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="MButton" name="mbutton_20">
+          <property name="text">
+           <string>ISAW</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="number">
+           <number>18</number>
+          </property>
+          <property name="value">
+           <number>110</number>
+          </property>
+          <attribute name="buttonGroup">
+           <string>buttonGroup_4</string>
+          </attribute>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="title">
+        <string>Filter</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QGroupBox" name="groupBox_5">
+          <property name="title">
+           <string>Freq</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="MDial" name="mdial">
+             <property name="number">
+              <number>7</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="MSlider" name="mslider_7">
+             <property name="number">
+              <number>11</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="MSlider" name="mslider_8">
+             <property name="number">
+              <number>12</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_4">
+          <property name="title">
+           <string>Q</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="MDial" name="mdial_2">
+             <property name="number">
+              <number>8</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="MSlider" name="mslider_9">
+             <property name="number">
+              <number>13</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="MSlider" name="mslider_10">
+             <property name="number">
+              <number>14</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="MSlider" name="mslider_6">
+       <property name="number">
+        <number>9</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MSurface</class>
+   <extends>QWidget</extends>
+   <header>msurface.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MButton</class>
+   <extends>QPushButton</extends>
+   <header>mbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>MDial</class>
+   <extends>QDial</extends>
+   <header>mdial.h</header>
+  </customwidget>
+  <customwidget>
+   <class>MSlider</class>
+   <extends>QSlider</extends>
+   <header>mslider.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup_3"/>
+  <buttongroup name="buttonGroup_4"/>
+ </buttongroups>
+</ui>
