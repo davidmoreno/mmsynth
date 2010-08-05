@@ -22,6 +22,7 @@
 #include <QtUiTools/QtUiTools>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QKeyEvent>
  
 #include <synth.h>
 #include <mdebug.h>
@@ -264,6 +265,41 @@ void MainWindow::connectGUI(MSurface *ui){
 		connect(ui,   SIGNAL(sendController(unsigned char,unsigned char)),
 				this, SLOT(receivedController(unsigned char,unsigned char)));
 	}
+}
+
+
+static char keyToMidiNote(int key){
+	/// Keyboard keys, to be assigned to 60 + index
+	static char keyToMidiNoteLow[]={ 90, 83, 88, 68, 67, 86, 71, 66, 72, 78, 74, 77, 44, 46, 209, 45 };
+	static int keyToMidiNoteHigh[]={ 81,50,87,51,69,82,53,84,54,89,55,85,73,57,79,48,80,16781904,161,43 };
+	
+	for (unsigned int i=0;i<sizeof(keyToMidiNoteLow);i++)
+		if (keyToMidiNoteLow[i]==key)
+			return 60 + i;
+	for (unsigned int i=0;i<sizeof(keyToMidiNoteHigh)/sizeof(keyToMidiNoteHigh[1]);i++)
+		if (keyToMidiNoteHigh[i]==key)
+			return 60 + 12 + i;
+	return -1;
+}
+
+void MainWindow::keyPressEvent ( QKeyEvent * event ){
+	if (event->isAutoRepeat())
+		return;
+	int key=keyToMidiNote(event->key());
+	DEBUG("Pressed key %d, midi note key %d",event->key(), key);
+	if (key<0)
+		return;
+	midi->GUINoteOn(key, 100);
+	pressedKeys+=key;
+}
+void MainWindow::keyReleaseEvent ( QKeyEvent * event ){
+	if (event->isAutoRepeat())
+		return;
+	int key=keyToMidiNote(event->key());
+	if (key<0)
+		return;
+	midi->GUINoteOff(key, 100);
+	pressedKeys-=key;
 }
 
 /**

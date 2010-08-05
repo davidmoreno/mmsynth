@@ -1,10 +1,10 @@
 /********************************************************************************
-** Form generated from reading ui file 'mainwindow.ui'
+** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sun Dec 13 23:37:33 2009
-**      by: Qt User Interface Compiler version 4.5.3
+** Created
+**      by: Qt User Interface Compiler version 4.6.3
 **
-** WARNING! All changes made in this file will be lost when recompiling ui file!
+** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
 #ifndef UI_MAINWINDOW_H
@@ -56,7 +56,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 600, 22));
+        menuBar->setGeometry(QRect(0, 0, 600, 21));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuSynth = new QMenu(menuBar);
@@ -87,11 +87,11 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
         actionQuit->setText(QApplication::translate("MainWindow", "Quit", 0, QApplication::UnicodeUTF8));
-        actionQuit->setShortcut(QApplication::translate("MainWindow", "Q", 0, QApplication::UnicodeUTF8));
+        actionQuit->setShortcut(QApplication::translate("MainWindow", "Ctrl+Q", 0, QApplication::UnicodeUTF8));
         actionSavePreset->setText(QApplication::translate("MainWindow", "Save preset...", 0, QApplication::UnicodeUTF8));
         actionLoadPreset->setText(QApplication::translate("MainWindow", "Load preset...", 0, QApplication::UnicodeUTF8));
         actionMIDILearn->setText(QApplication::translate("MainWindow", "MIDI Learn", 0, QApplication::UnicodeUTF8));
-        actionMIDILearn->setShortcut(QApplication::translate("MainWindow", "L", 0, QApplication::UnicodeUTF8));
+        actionMIDILearn->setShortcut(QApplication::translate("MainWindow", "Ctrl+L", 0, QApplication::UnicodeUTF8));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0, QApplication::UnicodeUTF8));
         menuSynth->setTitle(QApplication::translate("MainWindow", "Synth", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

@@ -20,7 +20,7 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -55,7 +55,7 @@
     <string>Quit</string>
    </property>
    <property name="shortcut">
-    <string>Q</string>
+    <string>Ctrl+Q</string>
    </property>
   </action>
   <action name="actionSavePreset">
@@ -73,7 +73,7 @@
     <string>MIDI Learn</string>
    </property>
    <property name="shortcut">
-    <string>L</string>
+    <string>Ctrl+L</string>
    </property>
   </action>
  </widget>

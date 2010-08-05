@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QtGui/QMainWindow>
+#include <QtCore/QSet>
 
 class Midi;
 class MSurface;
@@ -42,6 +43,9 @@ public slots:
 signals:
 	void sendController(unsigned char controllerId, unsigned char value);
 	
+protected:
+	virtual void keyPressEvent ( QKeyEvent * event );
+	virtual void keyReleaseEvent ( QKeyEvent * event );
 private:
 	void connectGUI(MSurface *ui);
 	Synth *createSynth(const QString &name);
@@ -54,6 +58,7 @@ private:
 	QList<Synth *> synths;
 	Midi *midi;
 	Audio *audio;
+	QSet<int> pressedKeys;
 };
 
 #endif // MAINWINDOW_H
