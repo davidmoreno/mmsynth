@@ -1,0 +1,9 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+ <qresource>
+   <file>default.ui</file>
+   <file>mono1.ui</file>
+   <file>polybase.ui</file>
+   <file>synth4k.ui</file>
+ </qresource>
+</RCC>
