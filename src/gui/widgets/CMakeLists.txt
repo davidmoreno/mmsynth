@@ -16,3 +16,5 @@ ADD_LIBRARY( mwidgets SHARED mwidgetplugins moc_mwidgetplugins mbutton moc_mbutt
 
 INSTALL( TARGETS mwidgets DESTINATION /usr/lib/qt4/plugins/designer/ )
 INSTALL( TARGETS mwidgets DESTINATION lib )
+
+ADD_LIBRARY( mwidgets_static STATIC muiloader moc_mwidgetplugins mbutton moc_mbutton mdial moc_mdial mslider moc_mslider msurface moc_msurface )

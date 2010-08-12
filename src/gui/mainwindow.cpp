@@ -19,19 +19,21 @@
 #include <dlfcn.h>
 #include <stdio.h> 
 
-#include <QtUiTools/QtUiTools>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QKeyEvent>
+#include <QTextStream>
  
 #include <synth.h>
 #include <mdebug.h>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 #include "midi.h"
 #include "audio.h"
 #include "widgets/msurface.h"
+#include "widgets/muiloader.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -152,7 +154,7 @@ void MainWindow::on_actionMIDILearn_triggered(){
  * @short Adds a synth to the system
  */
 void MainWindow::addSynth(const QString &synthname){
-	QUiLoader loader;
+	MUiLoader loader;
 
 	QString uifile=lookForFile(QString("%1.ui").arg(synthname),"uis");
 	
@@ -215,7 +217,7 @@ Synth *MainWindow::createSynth(const QString &synthname){
 	DEBUG("Loading %s, %s",libfile.toAscii().data(), lib ? "ok" : "nok");
 	if (!lib){
 		ERROR("Library found, but cant be loaded. Synth '%s' not created.",synthname.toAscii().data());
-		WARNING(dlerror());
+		WARNING("%s",dlerror());
 	}
 	else{
 		dlclose(lib);
@@ -234,7 +236,7 @@ Synth *MainWindow::createSynth(const QString &synthname){
 		return func(this);
 
 	ERROR("Synth '%s' not found. Not creating it.",synthname.toAscii().data());
-	WARNING(dlerror());
+	WARNING("%s",dlerror());
 	return new Synth(this);
 }
 
@@ -329,6 +331,7 @@ QString MainWindow::lookForFile(const QString &filename, const QString &optional
 	}
 	options<<QString("%1/%2").arg(INSTALL_PREFIX).arg(filename);
 	options<<QString("%1/%2/%3").arg(INSTALL_PREFIX).arg(optionaldir).arg(filename);
+	options<<QString(":%1").arg(filename);
 	
 	foreach(QString file, options){
 		DEBUG("Checking if %s exists",file.toAscii().data());

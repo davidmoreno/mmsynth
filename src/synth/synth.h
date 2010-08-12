@@ -40,7 +40,7 @@ class Synth : public QObject
 {
 	Q_OBJECT
 public:
-	/// Signature for the crator func that should be at the loaded shared lib
+	/// Signature for the creator func that should be at the loaded shared lib
 	typedef Synth *(*synth_creator_func)(QObject *parent);
 	
 	Synth(QObject *parent=NULL);

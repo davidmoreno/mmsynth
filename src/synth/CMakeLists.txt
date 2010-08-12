@@ -9,4 +9,4 @@ add_subdirectory(modules)
 add_subdirectory(synth4k)
 add_subdirectory(polybase)
 add_subdirectory(mono1)
-
+add_subdirectory(sampler)

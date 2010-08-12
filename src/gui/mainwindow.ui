@@ -20,18 +20,18 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>File</string>
+     <string>&amp;File</string>
     </property>
     <addaction name="actionQuit"/>
    </widget>
    <widget class="QMenu" name="menuSynth">
     <property name="title">
-     <string>Synth</string>
+     <string>&amp;Synth</string>
     </property>
     <addaction name="actionSavePreset"/>
     <addaction name="actionLoadPreset"/>
@@ -41,18 +41,10 @@
    <addaction name="menuFile"/>
    <addaction name="menuSynth"/>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionQuit">
    <property name="text">
-    <string>Quit</string>
+    <string>&amp;Quit</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
@@ -60,20 +52,20 @@
   </action>
   <action name="actionSavePreset">
    <property name="text">
-    <string>Save preset...</string>
+    <string>&amp;Save preset...</string>
    </property>
   </action>
   <action name="actionLoadPreset">
    <property name="text">
-    <string>Load preset...</string>
+    <string>&amp;Load preset...</string>
    </property>
   </action>
   <action name="actionMIDILearn">
    <property name="text">
-    <string>MIDI Learn</string>
+    <string>&amp;MIDI Learn</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+L</string>
+    <string>F1</string>
    </property>
   </action>
  </widget>

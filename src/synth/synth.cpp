@@ -24,7 +24,7 @@
 QMap<QString,Synth::synth_creator_func> Synth::synths;
 
 Synth::Synth(QObject *parent) : QObject(parent){
-	DEBUG("Initialiting synth");
+	DEBUG("Initializing synth");
 	_samplerate=44100.0; // a safe guess, by the moment.
 	position=0;
 }
