@@ -4,6 +4,7 @@ ADD_SUBDIRECTORY( widgets )
 include_directories( ../common )
 include_directories( ../synth )
 include_directories( . )
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_definitions( -DINSTALL_PREFIX=\"${CMAKE_INSTALL_PREFIX}/lib/mmsynth/\" ) 
 # "
