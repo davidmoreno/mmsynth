@@ -139,6 +139,11 @@ static void license(){
 
 static void audioHelp(){
 	printf("\n"
-	"Available audio engines: alsa jack\n"
+	"Available audio engines: alsa jack\n\n"
+	"Options by engine:\n\n"
+	" --audio=alsa,periods=3,frames=128,device=hw:0,0\n"
+	"     periods -- Number of periods\n"
+	"     frames  -- Number of frames, latency is (frames*periods/channels)/samplerate\n"
+	"     device  -- Alsa device to use\n"
 	"\n");
 }

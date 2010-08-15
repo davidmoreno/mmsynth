@@ -51,6 +51,8 @@ protected:
 	int periods;
 	/// Size of the buffer (latency is periods*frames)
 	unsigned int frames;
+	/// Device name to open
+	QString device;
 	
 	/// PCM handle
 	snd_pcm_t *pcm;

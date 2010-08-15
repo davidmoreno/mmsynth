@@ -63,6 +63,8 @@ Audio *Audio::createAudio(const QString &audioname, QObject *parent){
 	audiosystem=audioname.section(",",0,0);
 	audiooptions=audioname.section(",",1);
 	
+	DEBUG("Audio system <%s> audio options <%s>",audiosystem.toAscii().constData(), audiooptions.toAscii().constData());
+	
 	if (audiosystem=="alsa")
 		return new AlsaAudio(audiooptions, parent);
 	else if (audiosystem=="jack")

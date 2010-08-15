@@ -17,6 +17,7 @@
 */
 
 #include <QStringList>
+#include <QStringListIterator>
 
 #include <math.h>
 
@@ -29,10 +30,17 @@
 AlsaAudio::AlsaAudio(const QString &options, QObject *parent) : Audio(parent){
 	periods=2;
 	frames=1024;
+	device="default";
 	
 	if (!options.isEmpty()){
-		foreach(QString opt, options.split(",")){
+		DEBUG("Options %s",options.toAscii().constData());
+		
+		QString opt;
+		QStringList optlist=options.split(",");
+		QStringListIterator I(optlist);
+		while(I.hasNext()){
 			DEBUG("Option %s",opt.toAscii().constData());
+			opt=I.next();
 			QString key=opt.section("=",0,0);
 			QString value=opt.section("=",1);
 			if (key=="periods"){
@@ -42,6 +50,18 @@ AlsaAudio::AlsaAudio(const QString &options, QObject *parent) : Audio(parent){
 			else if (key=="frames"){
 				frames=value.toInt();
 				DEBUG("Set fames to %d",periods);
+			}
+			else if (key=="device"){
+				device=value;
+				if (I.hasNext()){
+					value=I.next();
+					if (value.indexOf("=")>0)
+						I.previous();
+					else
+						device+=","+value;
+				}
+				
+				DEBUG("Set device to %s",device.toAscii().constData());
 			}
 			else{
 				WARNING("Unknown alsa audio option: %s=%s",key.toAscii().constData(), value.toAscii().constData());
@@ -61,8 +81,8 @@ bool AlsaAudio::init(){
 	
 	int nbuffers=periods;
 	
-	err=snd_pcm_open(&pcm,"default", stream, 0);
-	if (err<0){ WARNING("Cant open audio device");  return false; }
+	err=snd_pcm_open(&pcm,device.toAscii().constData(), stream, 0);
+	if (err<0){ WARNING("Cant open audio device. Set with --audio=alsa,device=hw:0");  return false; }
 	
 	err=snd_pcm_hw_params_malloc(&hwparams);
 	if (err<0){ WARNING("Cant malloc hw parameters memory");  return false; }
@@ -82,18 +102,23 @@ bool AlsaAudio::init(){
 	err|= snd_pcm_hw_params_set_channels(pcm, hwparams, 2)<0;
 	if (err){ WARNING("Cant set hw parameters"); return false; }
 	err|=snd_pcm_hw_params_set_periods(pcm, hwparams, nbuffers, 0)<0;
-	if (err){ WARNING("Cant set hw parameters, bad period number: %d, set with --audio=alsa,periods=3"); return false; }
+	if (err){ WARNING("Cant set hw parameters, bad period number: %d, set with --audio=alsa,periods=3",nbuffers); return false; }
 	snd_pcm_uframes_t minframes=0;
 	snd_pcm_uframes_t maxframes=0;
 	err|=snd_pcm_hw_params_get_buffer_size_min(hwparams, &minframes )<0;
 	if (err){ WARNING("Cant set hw parameters"); return false; }
-	err|=snd_pcm_hw_params_get_buffer_size_min(hwparams, &maxframes )<0;
+	err|=snd_pcm_hw_params_get_buffer_size_max(hwparams, &maxframes )<0;
 	if (err){ WARNING("Cant set hw parameters"); return false; }
 
+	if (minframes==maxframes && minframes!=frames){
+		WARNING("With this period size you can only have %ld frames, setting it automatically", minframes);
+		frames=minframes;
+	}
+
 	if (frames<minframes || frames>maxframes){
-		ERROR("Selected frames (%d) not allowed, should be between %ld and %ld. Select with --audio=alsa,frames=%ld",
+		WARNING("Selected frames (%d) not allowed, should be between %ld and %ld. Select with --audio=alsa,frames=%ld. Setting to minimum.",
 					frames, minframes, maxframes, minframes);
-		return false;
+		frames=minframes;
 	}
 
 
