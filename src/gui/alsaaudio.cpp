@@ -16,6 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <QStringList>
+
 #include <math.h>
 
 #include <synth.h>
@@ -24,7 +26,28 @@
 #include "alsaaudio.h"
 #include "mdebug.h"
 
-AlsaAudio::AlsaAudio(QObject *parent) : Audio(parent){
+AlsaAudio::AlsaAudio(const QString &options, QObject *parent) : Audio(parent){
+	periods=2;
+	frames=1024;
+	
+	if (!options.isEmpty()){
+		foreach(QString opt, options.split(",")){
+			DEBUG("Option %s",opt.toAscii().constData());
+			QString key=opt.section("=",0,0);
+			QString value=opt.section("=",1);
+			if (key=="periods"){
+				periods=value.toInt();
+				DEBUG("Set periods to %d",periods);
+			}
+			else if (key=="frames"){
+				frames=value.toInt();
+				DEBUG("Set fames to %d",periods);
+			}
+			else{
+				WARNING("Unknown alsa audio option: %s=%s",key.toAscii().constData(), value.toAscii().constData());
+			}
+		}
+	}
 	pcm=NULL;
 }
 
@@ -36,7 +59,7 @@ bool AlsaAudio::init(){
 	snd_pcm_hw_params_t *hwparams;
 	snd_pcm_stream_t stream=SND_PCM_STREAM_PLAYBACK;
 	
-	int nbuffers=2;
+	int nbuffers=periods;
 	
 	err=snd_pcm_open(&pcm,"default", stream, 0);
 	if (err<0){ WARNING("Cant open audio device");  return false; }
@@ -59,9 +82,22 @@ bool AlsaAudio::init(){
 	err|= snd_pcm_hw_params_set_channels(pcm, hwparams, 2)<0;
 	if (err){ WARNING("Cant set hw parameters"); return false; }
 	err|=snd_pcm_hw_params_set_periods(pcm, hwparams, nbuffers, 0)<0;
+	if (err){ WARNING("Cant set hw parameters, bad period number: %d, set with --audio=alsa,periods=3"); return false; }
+	snd_pcm_uframes_t minframes=0;
+	snd_pcm_uframes_t maxframes=0;
+	err|=snd_pcm_hw_params_get_buffer_size_min(hwparams, &minframes )<0;
 	if (err){ WARNING("Cant set hw parameters"); return false; }
-	snd_pcm_uframes_t frames=0;
-	err|=snd_pcm_hw_params_get_buffer_size(hwparams, &frames )<0;
+	err|=snd_pcm_hw_params_get_buffer_size_min(hwparams, &maxframes )<0;
+	if (err){ WARNING("Cant set hw parameters"); return false; }
+
+	if (frames<minframes || frames>maxframes){
+		ERROR("Selected frames (%d) not allowed, should be between %ld and %ld. Select with --audio=alsa,frames=%ld",
+					frames, minframes, maxframes, minframes);
+		return false;
+	}
+
+
+	err|=snd_pcm_hw_params_set_buffer_size(pcm, hwparams, frames);
 	if (err){ WARNING("Cant set hw parameters"); return false; }
 
 	err|= snd_pcm_hw_params (pcm, hwparams)<0;

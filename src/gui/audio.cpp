@@ -18,6 +18,8 @@
 
 #include <synth.h>
 
+#include "mdebug.h"
+
 #include "audio.h"
 #include "alsaaudio.h"
 #include "jackaudio.h"
@@ -55,9 +57,16 @@ void Audio::setMidi(Midi *m){
  * should be more dynamic (like allow the use of plugins), but not by the moment as its unnecesary.
  */
 Audio *Audio::createAudio(const QString &audioname, QObject *parent){
-	if (audioname=="alsa")
-		return new AlsaAudio(parent);
-	else if (audioname=="jack")
+	QString audiooptions;
+	QString audiosystem;
+	
+	audiosystem=audioname.section(",",0,0);
+	audiooptions=audioname.section(",",1);
+	
+	if (audiosystem=="alsa")
+		return new AlsaAudio(audiooptions, parent);
+	else if (audiosystem=="jack")
 		return new JackAudio(parent);
+	WARNING("Unknown audio system %s",audiosystem.toAscii().constData());
 	return NULL;
 }

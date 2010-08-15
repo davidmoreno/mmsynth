@@ -35,7 +35,7 @@ class AlsaAudio : public Audio
 {
 	Q_OBJECT
 public:
-	AlsaAudio(QObject *parent=NULL);
+	AlsaAudio(const QString &options, QObject *parent=NULL);
 	~AlsaAudio();
 	
 	virtual bool init();
@@ -47,6 +47,11 @@ public slots:
 	void run();
 
 protected:
+	/// Number of block on the queue
+	int periods;
+	/// Size of the buffer (latency is periods*frames)
+	unsigned int frames;
+	
 	/// PCM handle
 	snd_pcm_t *pcm;
 	/// Block sizes, as needed by the alsa API
